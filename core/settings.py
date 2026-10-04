@@ -15,6 +15,7 @@ from pathlib import Path
 from datetime import timedelta
 from django.urls import reverse_lazy
 from dotenv import load_dotenv
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -100,6 +101,12 @@ DATABASES = {
     }
 }
 
+if os.getenv('DATABASE_URL'):
+    DATABASES['default'] = dj_database_url.config(
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True
+    )
 
 # Email Configuration
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
