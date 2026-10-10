@@ -8,6 +8,7 @@ from rest_framework.validators import UniqueValidator
 User = get_user_model()
 token_generator = PasswordResetTokenGenerator()
 
+
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
