@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة الإدارة - نظام إدارة الدرجات</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="toast-container" class="toast-container"></div>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-user-shield logo-icon"></i>
+                <h2 id="sidebar-admin-name">المدير</h2>
+            </div>
+
+            <nav class="sidebar-menu">
+                <div class="menu-label">القائمة الرئيسية</div>
+                <a href="#" id="nav-teachers" class="active" onclick="switchMainTab('teachers')">
+                    <i class="fa-solid fa-chalkboard-user"></i> المدرسين والمواد
+                </a>
+                <a href="#" id="nav-grades" onclick="switchMainTab('grades')">
+                    <i class="fa-solid fa-chart-simple"></i> درجات الطلاب
+                </a>
+
+                <div class="menu-label">الحساب</div>
+                <a href="#" id="nav-profile" onclick="switchMainTab('profile')">
+                    <i class="fa-solid fa-address-card"></i> الحساب الشخصي
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="logout()">
+                    <i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <main class="main-content">
+            <header class="top-header">
+                <h1 id="page-title">المدرسين والمواد</h1>
+                <div class="user-profile-badge">
+                    <span id="user-display">المدير</span>
+                    <div id="user-initials" class="avatar-circle">م</div>
+                </div>
+            </header>
+
+            <!-- 1. المدرسين والمواد -->
+            <section id="section-teachers" class="tab-content">
+                <div class="section-actions">
+                    <h3 class="section-title">قائمة المواد والمعلمين</h3>
+                    <button class="btn btn-primary" onclick="openAddSubjectModal()">
+                        <i class="fa-solid fa-plus"></i> إضافة مادة
+                    </button>
+                </div>
+                <div class="table-card">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>المادة</th>
+                                <th>المعلم</th>
+                                <th>البريد الإلكتروني</th>
+                                <th>إجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teachers-list-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 2. الدرجات -->
+            <section id="section-grades" class="tab-content hidden">
+                <div class="section-actions">
+                    <h3 class="section-title">كشف درجات الطلاب</h3>
+                    <button class="btn btn-primary" onclick="openAddMarkModal()">
+                        <i class="fa-solid fa-plus"></i> رصد درجة جديدة
+                    </button>
+                </div>
+                <div class="table-card">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>اسم الطالب</th>
+                                <th>المادة</th>
+                                <th>الفترة</th>
+                                <th>كراسة الفصل</th>
+                                <th>الواجب</th>
+                                <th>التقييم الأسبوعي</th>
+                                <th>المجموع / الامتحان</th>
+                                <th>إجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="all-marks-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 3. الحساب الشخصي -->
+            <section id="section-profile" class="tab-content hidden">
+                <div class="profile-container">
+                    <div class="profile-header-card">
+                        <div class="profile-avatar-wrapper">
+                            <div class="profile-avatar" id="profile-avatar-large">م</div>
+                        </div>
+                        <div class="profile-main-info">
+                            <h2 id="profile-full-name-display">...</h2>
+                            <span id="profile-role-badge" class="badge-role">
+                                <i class="fa-solid fa-user-shield"></i> مسئول النظام (Admin)
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="profile-details-grid">
+                        <div class="info-card">
+                            <div class="info-icon"><i class="fa-solid fa-user"></i></div>
+                            <div class="info-content">
+                                <span class="info-label">اسم المستخدم</span>
+                                <strong class="info-value" id="profile-username">-</strong>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon"><i class="fa-solid fa-id-card"></i></div>
+                            <div class="info-content">
+                                <span class="info-label">الاسم الأول</span>
+                                <strong class="info-value" id="profile-first-name">-</strong>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon"><i class="fa-solid fa-id-card"></i></div>
+                            <div class="info-content">
+                                <span class="info-label">اسم العائلة</span>
+                                <strong class="info-value" id="profile-last-name">-</strong>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="info-content">
+                                <span class="info-label">البريد الإلكتروني</span>
+                                <strong class="info-value" id="profile-email">-</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- نافذة المادة -->
+    <div id="subject-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="subject-modal-title">إضافة مادة</h3>
+                <button class="btn-close" onclick="closeModal('subject-modal')">&times;</button>
+            </div>
+            <form id="subject-form">
+                <input type="hidden" id="subject-id">
+                <div class="form-group">
+                    <label>اسم المادة</label>
+                    <select id="input-subject-name" required>
+                        <option value="">Select Subject...</option>
+                        <option value="Science">Science</option>
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="English">English</option>
+                        <option value="Connect Plus">Connect Plus</option>
+                        <option value="Arabic">Arabic</option>
+                        <option value="German">German</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="French">French</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Religion">Religion</option>
+                        <option value="Computer">Computer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>المعلم المسند للمادة</label>
+                    <select id="select-teacher" required>
+                        <option value="">اختر المعلم...</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('subject-modal')">إلغاء</button>
+                    <button type="submit" class="btn btn-primary">حفظ البيانات</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة الدرجة -->
+    <div id="mark-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="mark-modal-title">رصد درجة جديدة</h3>
+                <button class="btn-close" onclick="closeModal('mark-modal')">&times;</button>
+            </div>
+            <form id="mark-form">
+                <input type="hidden" id="mark-id">
+                <div class="form-group">
+                    <label>الطالب</label>
+                    <select id="modal-student-select" required></select>
+                </div>
+                <div class="form-group">
+                    <label>المادة</label>
+                    <select id="modal-subject-select" required></select>
+                </div>
+                <div class="form-group">
+                    <label>الفترة / الأسبوع</label>
+                    <select id="modal-period-select" required></select>
+                </div>
+                <div id="group-weekly-inputs">
+                    <div class="form-group"><label>كراسة الفصل</label><input type="number" step="0.5" id="input-class-work" placeholder="0.00"></div>
+                    <div class="form-group"><label>الواجب</label><input type="number" step="0.5" id="input-homework" placeholder="0.00"></div>
+                    <div class="form-group"><label>التقييم الأسبوعي</label><input type="number" step="0.5" id="input-weekly-assessment" placeholder="0.00"></div>
+                </div>
+                <div id="group-monthly-input" class="hidden">
+                    <div class="form-group"><label>درجة الامتحان الشهري</label><input type="number" step="0.5" id="input-monthly-exam" placeholder="0.00"></div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('mark-modal')">إلغاء</button>
+                    <button type="submit" class="btn btn-primary">حفظ البيانات</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة التأكيد -->
+    <div id="confirm-modal" class="modal-overlay hidden">
+        <div class="modal-box modal-box-sm">
+            <div class="modal-header"><h3>تأكيد الإجراء</h3></div>
+            <p id="confirm-message" style="padding: 15px 0; color: var(--text-muted);">هل أنت متأكد؟</p>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" id="confirm-btn-cancel">إلغاء</button>
+                <button type="button" class="btn btn-delete" id="confirm-btn-accept">حذف</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

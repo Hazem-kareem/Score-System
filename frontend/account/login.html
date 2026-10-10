@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - نظام المدرسة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="login-box">
+            <div class="login-mark"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h2 id="form-title">تسجيل الدخول</h2>
+            <p class="login-sub" id="form-sub">سجّل الدخول للوصول إلى لوحتك الخاصة</p>
+ 
+            <div id="auth-alert" class="alert hidden"></div>
+ 
+            <!-- نموذج تسجيل الدخول -->
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-username">اسم المستخدم</label>
+                    <input type="text" id="login-username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">كلمة المرور</label>
+                    <input type="password" id="login-password" required autocomplete="current-password">
+                </div>
+                <div class="forgot-row">
+                    <button type="button" id="forgot-btn" class="btn-link" onclick="openForgotModal()">نسيت كلمة المرور؟</button>
+                </div>
+                <button type="submit" id="login-submit" class="btn-primary">
+                    <i class="fa-solid fa-right-to-bracket"></i> دخول
+                </button>
+            </form>
+ 
+            <!-- نموذج إنشاء حساب -->
+            <form id="register-form" class="hidden">
+                <div class="form-group">
+                    <label for="reg-username">اسم المستخدم</label>
+                    <input type="text" id="reg-username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">البريد الإلكتروني</label>
+                    <input type="email" id="reg-email" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="reg-first-name">الاسم الأول</label>
+                    <input type="text" id="reg-first-name" required autocomplete="given-name">
+                </div>
+                <div class="form-group">
+                    <label for="reg-last-name">اسم العائلة</label>
+                    <input type="text" id="reg-last-name" required autocomplete="family-name">
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">كلمة المرور</label>
+                    <input type="password" id="reg-password" required autocomplete="new-password">
+                </div>
+                <button type="submit" id="register-submit" class="btn-primary">
+                    <i class="fa-solid fa-user-plus"></i> إنشاء حساب
+                </button>
+            </form>
+ 
+            <div class="auth-toggle">
+                <span id="toggle-text">ليس لديك حساب؟</span>
+                <button type="button" id="toggle-btn" class="btn-link">تسجيل حساب جديد</button>
+            </div>
+        </div>
+    </div>
+ 
+    <!-- نافذة نسيت كلمة المرور -->
+    <div id="forgot-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <h3><i class="fa-solid fa-key"></i> استعادة كلمة المرور</h3>
+            <p class="modal-sub">اكتب بريدك الإلكتروني وسنرسل لك تعليمات إعادة التعيين.</p>
+            <div class="form-group">
+                <label for="forgot-email">البريد الإلكتروني</label>
+                <input type="email" id="forgot-email" autocomplete="email">
+            </div>
+            <p id="forgot-msg" class="forgot-msg"></p>
+            <div class="modal-actions">
+                <button type="button" class="btn-secondary" onclick="closeForgotModal()">إلغاء</button>
+                <button type="button" id="forgot-submit" class="btn-primary" onclick="submitForgotPassword()">
+                    <i class="fa-solid fa-paper-plane"></i> إرسال
+                </button>
+            </div>
+        </div>
+    </div>
+ 
+    <script src="script.js"></script>
+</body>
+</html>

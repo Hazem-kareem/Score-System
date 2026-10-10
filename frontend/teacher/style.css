@@ -1,0 +1,439 @@
+/* teacher/style.css */
+:root {
+    --bg-dark: #0f1117;
+    --surface-1: #181a20;
+    --surface-2: #22252e;
+    --border-color: #2e323d;
+    --accent: #e5a93c;
+    --accent-hover: #f3b84c;
+    --text-main: #f1f2f4;
+    --text-muted: #8e94a0;
+    --danger: #e74c3c;
+    --success: #2ecc71;
+    --sidebar-width: 260px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    direction: rtl;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--surface-1);
+    border-left: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 15px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo-icon {
+    font-size: 1.8rem;
+    color: var(--accent);
+}
+
+.sidebar-header h2 {
+    font-size: 1.2rem;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.menu-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 15px 10px 5px;
+    text-transform: uppercase;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.sidebar-menu a:hover, .sidebar-menu a.active {
+    background-color: var(--surface-2);
+    color: var(--accent);
+}
+
+.sidebar-menu a i {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar-footer {
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.btn-logout {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+    background: var(--surface-2);
+    color: var(--danger);
+    border-color: var(--danger);
+}
+
+/* Main Content Area */
+.main-content {
+    margin-right: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    padding: 30px;
+    min-height: 100vh;
+}
+
+/* Top Header */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.user-profile-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--surface-1);
+    padding: 6px 16px;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+}
+
+.avatar-circle {
+    width: 35px;
+    height: 35px;
+    background-color: var(--accent);
+    color: #111;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Section Actions & Subnav */
+.section-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.subnav-toggle {
+    display: flex;
+    background: var(--surface-1);
+    padding: 4px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.subnav-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.subnav-btn.active {
+    background: var(--surface-2);
+    color: var(--accent);
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: #111;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+}
+
+.btn-secondary {
+    background-color: var(--surface-2);
+    color: var(--text-main);
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
+.btn-edit {
+    background-color: rgba(229, 169, 60, 0.15);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+.btn-delete {
+    background-color: rgba(231, 76, 60, 0.15);
+    color: var(--danger);
+    border: 1px solid var(--danger);
+}
+
+/* Data Tables */
+.table-card {
+    background-color: var(--surface-1);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: right;
+}
+
+.data-table th, .data-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table th {
+    background-color: var(--surface-2);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Profile Section Card */
+.profile-card {
+    background: var(--surface-1);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    max-width: 600px;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    background-color: var(--accent);
+    color: #111;
+    font-size: 2.2rem;
+    font-weight: bold;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-details h2 {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+}
+
+.profile-email {
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    direction: ltr;
+    text-align: right;
+}
+
+.badge-role {
+    display: inline-block;
+    background: rgba(229, 169, 60, 0.15);
+    color: var(--accent);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid var(--accent);
+}
+
+/* Modals */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background-color: var(--surface-1);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    padding: 25px;
+}
+
+.modal-box-sm {
+    max-width: 400px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.btn-close {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px 14px;
+    background-color: var(--surface-2);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-main);
+    outline: none;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Utilities */
+.hidden {
+    display: none !important;
+}
+
+/* Toast Container */
+.toast-container {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease;
+}
+
+.toast-success { background-color: #2e7d32; }
+.toast-error { background-color: #c62828; }
+
+.toast.fade-out {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}

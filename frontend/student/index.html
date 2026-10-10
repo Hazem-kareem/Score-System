@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة الطالب - نظام إدارة الدرجات</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="mark">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="titles">
+                    <strong>بوابة الطالب</strong>
+                    <span id="sidebar-student-name">نظام الدرجات</span>
+                </div>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li class="sidebar-label">القائمة الرئيسية</li>
+                <li>
+                    <a href="#" id="nav-grades" class="active" onclick="switchMainTab('grades')">
+                        <i class="fa-solid fa-chart-simple"></i> الدرجات
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="nav-teachers" onclick="switchMainTab('teachers')">
+                        <i class="fa-solid fa-chalkboard-user"></i> المدرسين والمواد
+                    </a>
+                </li>
+                
+                <li class="sidebar-label">الحساب</li>
+                <li>
+                    <a href="#" id="nav-account" onclick="switchMainTab('account')">
+                        <i class="fa-solid fa-address-card"></i> الحساب الشخصي
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="logout()">
+                    <i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div>
+                    <h1 id="page-title">الدرجات</h1>
+                </div>
+                <div class="user-chip">
+                    <span id="user-display">الطالب</span>
+                    <div id="user-initials" class="initials">ط</div>
+                </div>
+            </header>
+
+            <!-- Section 1: Grades -->
+            <section id="section-grades" class="tab-content">
+                <div class="sub-navbar">
+                    <button id="subnav-weekly" class="subnav-btn active" onclick="switchGradesSubTab('weekly')">
+                        <i class="fa-solid fa-calendar-week"></i> تقييمات الأسابيع
+                    </button>
+                    <button id="subnav-monthly" class="subnav-btn" onclick="switchGradesSubTab('monthly')">
+                        <i class="fa-solid fa-award"></i> امتحانات الشهور
+                    </button>
+                </div>
+
+                <!-- Weekly Grades View -->
+                <div id="grades-weekly-view" class="grades-sub-view">
+                    <div class="card">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>المعلم</th>
+                                    <th>المادة</th>
+                                    <th>الأسبوع</th>
+                                    <th>كراسة الفصل</th>
+                                    <th>الواجب</th>
+                                    <th>التقييم الأسبوعي</th>
+                                    <th>المجموع</th>
+                                </tr>
+                            </thead>
+                            <tbody id="weekly-marks-body">
+                                <!-- Dynamic rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Monthly Grades View -->
+                <div id="grades-monthly-view" class="grades-sub-view hidden">
+                    <div class="card">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>المعلم</th>
+                                    <th>المادة</th>
+                                    <th>الامتحان</th>
+                                    <th>الدرجة</th>
+                                </tr>
+                            </thead>
+                            <tbody id="monthly-marks-body">
+                                <!-- Dynamic rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Teachers & Subjects -->
+            <section id="section-teachers" class="tab-content hidden">
+                <div class="card">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>المادة</th>
+                                <th>المعلم</th>
+                                <th>البريد الإلكتروني</th>
+                            </tr>
+                        </thead>
+                        <tbody id="teachers-body">
+                            <!-- Dynamic rows -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 3: Profile -->
+            <section id="section-account" class="tab-content hidden">
+                <div class="card profile-card">
+                    <div class="avatar" id="profile-avatar">ط</div>
+                    <div class="profile-details">
+                        <h2 id="profile-username">...</h2>
+                        <p id="profile-email" class="profile-email">...</p>
+                        <span id="profile-role" class="role-badge">الصلاحية: طالب</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+@import url('../teacher/style.css');
+
+.section-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.table-card {
+    overflow-x: auto;
+}
+
+/* تصميم الحساب الشخصي (عرض بطاقات متناسقة وراقية) */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.profile-header-card {
+    background: var(--card-bg, #1a1d24);
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profile-avatar-wrapper .profile-avatar {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f39c12, #d35400);
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+}
+
+.profile-main-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.profile-main-info h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-color, #fff);
+}
+
+.badge-role {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(243, 156, 18, 0.15);
+    color: #f39c12;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    width: fit-content;
+    border: 1px solid rgba(243, 156, 18, 0.3);
+}
+
+.profile-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.info-card {
+    background: var(--card-bg, #1a1d24);
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.info-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #f39c12;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    overflow: hidden;
+}
+
+.info-label {
+    font-size: 0.8rem;
+    color: var(--text-muted, #a0a0a0);
+}
+
+.info-value {
+    font-size: 1.05rem;
+    color: var(--text-color, #fff);
+    word-break: break-all;
+}
+
+.btn-delete:hover {
+    background-color: rgba(231, 76, 60, 0.3);
+}
