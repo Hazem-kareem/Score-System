@@ -24,6 +24,10 @@
       "dest": "core/wsgi.py"
     },
     {
+      "src": "/((?!api/|admin/|static/|account/|teacher/|student/|assets/).*)",
+      "dest": "frontend/account/login.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "frontend/$1"
     }
