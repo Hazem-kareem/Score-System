@@ -3,16 +3,29 @@
     {
       "src": "core/wsgi.py",
       "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb",
-        "runtime": "python3.9"
-      }
+      "config": { "maxLambdaSize": "15mb" }
+    },
+    {
+      "src": "frontend/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/(.*)",
       "dest": "core/wsgi.py"
+    },
+    {
+      "src": "/admin/(.*)",
+      "dest": "core/wsgi.py"
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "core/wsgi.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "frontend/$1"
     }
   ]
 }
