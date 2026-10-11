@@ -1,40 +1,23 @@
 {
-  "version": 2,
-  "builds": [
+  "redirects": [
     {
-      "src": "core/wsgi.py",
-      "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb" }
-    },
-    {
-      "src": "frontend/**",
-      "use": "@vercel/static"
+      "source": "/",
+      "destination": "/account/login.html",
+      "permanent": false
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "core/wsgi.py"
+      "source": "/api/(.*)",
+      "destination": "core/wsgi.py"
     },
     {
-      "src": "/admin/(.*)",
-      "dest": "core/wsgi.py"
+      "source": "/admin/(.*)",
+      "destination": "core/wsgi.py"
     },
     {
-      "src": "/static/(.*)",
-      "dest": "core/wsgi.py"
-    },
-    {
-      "src": "/(.*\\.(css|js|png|jpg|jpeg|ico|svg))",
-      "dest": "frontend/$1"
-    },
-    {
-      "src": "/",
-      "dest": "frontend/account/login.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "frontend/$1"
+      "source": "/static/(.*)",
+      "destination": "core/wsgi.py"
     }
   ]
 }
