@@ -1,22 +1,21 @@
 {
+  "builds": [
+    {
+      "src": "core/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
+    }
+  ],
   "redirects": [
     {
       "source": "/",
-      "destination": "/account/login.html",
+      "destination": "/frontend/account/login.html",
       "permanent": false
     }
   ],
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "core/wsgi.py"
-    },
-    {
-      "source": "/admin/(.*)",
-      "destination": "core/wsgi.py"
-    },
-    {
-      "source": "/static/(.*)",
+      "source": "/(.*)",
       "destination": "core/wsgi.py"
     }
   ]
