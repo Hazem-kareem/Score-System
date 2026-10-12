@@ -3,27 +3,29 @@
     {
       "src": "core/wsgi.py",
       "use": "@vercel/python",
-      "config": { 
-        "maxLambdaSize": "15mb", 
-        "runtime": "python3.12" 
+      "config": {
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.12"
       }
     }
   ],
-  "redirects": [
+  "routes": [
     {
-      "source": "/",
-      "destination": "/frontend/account/login.html",
-      "permanent": false
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "core/wsgi.py"
+      "src": "/api/(.*)",
+      "dest": "core/wsgi.py"
     },
     {
-      "source": "/admin/(.*)",
-      "destination": "core/wsgi.py"
+      "src": "/admin/(.*)",
+      "dest": "core/wsgi.py"
+    },
+    {
+      "src": "/",
+      "status": 301,
+      "headers": { "Location": "/frontend/account/login.html" }
+    },
+    {
+      "src": "/frontend/(.*)",
+      "dest": "/frontend/$1"
     }
   ]
 }
