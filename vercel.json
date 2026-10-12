@@ -15,7 +15,11 @@
   ],
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/api/(.*)",
+      "destination": "core/wsgi.py"
+    },
+    {
+      "source": "/admin/(.*)",
       "destination": "core/wsgi.py"
     }
   ]
