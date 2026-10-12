@@ -194,7 +194,7 @@ UNFOLD = {
                     {
                         "title": "المستخدمين",
                         "icon": "person",
-                        "link": reverse_lazy("admin:accounts_customuser_changelist"),
+                        "link": "/admin/accounts/customuser/",  # رابط مباشر بدلاً من reverse_lazy
                     },
                 ],
             },
@@ -205,12 +205,12 @@ UNFOLD = {
                     {
                         "title": "المواد الدراسية ",
                         "icon": "book",
-                        "link": reverse_lazy("admin:subjects_subject_changelist"),
+                        "link": "/admin/subjects/subject/",  # رابط مباشر بدلاً من reverse_lazy
                     },
                     {
                         "title": "الدرجات ",
                         "icon": "grade",
-                        "link": reverse_lazy("admin:marks_mark_changelist"),
+                        "link": "/admin/marks/mark/",  # رابط مباشر بدلاً من reverse_lazy
                     },
                 ],
             },
