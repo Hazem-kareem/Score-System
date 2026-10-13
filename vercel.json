@@ -7,15 +7,15 @@
         "maxLambdaSize": "15mb",
         "runtime": "python3.12"
       }
+    },
+    {
+      "src": "frontend/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/admin/(.*)",
-      "dest": "core/wsgi.py"
-    },
-    {
-      "src": "/admin",
+      "src": "/django-admin/(.*)",
       "dest": "core/wsgi.py"
     },
     {
@@ -26,11 +26,11 @@
       "src": "/",
       "status": 301,
       "headers": {
-        "Location": "/frontend/account/login.html"
+        "Location": "/account/login.html"
       }
     },
     {
-      "src": "/frontend/(.*)",
+      "src": "/(.*)",
       "dest": "/frontend/$1"
     }
   ]
