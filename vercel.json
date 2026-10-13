@@ -11,11 +11,23 @@
     {
       "src": "frontend/**",
       "use": "@vercel/static"
+    },
+    {
+      "src": "staticfiles/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
+      "src": "/static/(.*)",
+      "dest": "/staticfiles/$1"
+    },
+    {
       "src": "/django-admin/(.*)",
+      "dest": "core/wsgi.py"
+    },
+    {
+      "src": "/django-admin",
       "dest": "core/wsgi.py"
     },
     {
