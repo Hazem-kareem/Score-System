@@ -23,11 +23,11 @@
       "dest": "/staticfiles/$1"
     },
     {
-      "src": "/admin/(.*)",
+      "src": "/django-system-admin/(.*)",
       "dest": "core/wsgi.py"
     },
     {
-      "src": "/admin",
+      "src": "/django-system-admin",
       "dest": "core/wsgi.py"
     },
     {

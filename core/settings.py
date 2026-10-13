@@ -180,7 +180,6 @@ CACHES = {
         }
     }
 }
-
 UNFOLD = {
     "SIDEBAR": {
         "show_search": False,
@@ -193,7 +192,7 @@ UNFOLD = {
                     {
                         "title": "المستخدمين",
                         "icon": "person",
-                        "link": "/admin/accounts/customuser/",  # رابط مباشر بدلاً من reverse_lazy
+                        "link": "/django-system-admin/accounts/customuser/",  # تم تحديث الرابط للمسار الجديد
                     },
                 ],
             },
@@ -204,12 +203,12 @@ UNFOLD = {
                     {
                         "title": "المواد الدراسية ",
                         "icon": "book",
-                        "link": "/admin/subjects/subject/",  # رابط مباشر بدلاً من reverse_lazy
+                        "link": "/django-system-admin/subjects/subject/",  # تم تحديث الرابط للمسار الجديد
                     },
                     {
                         "title": "الدرجات ",
                         "icon": "grade",
-                        "link": "/admin/marks/mark/",  # رابط مباشر بدلاً من reverse_lazy
+                        "link": "/django-system-admin/marks/mark/",  # تم تحديث الرابط للمسار الجديد
                     },
                 ],
             },
