@@ -11,8 +11,16 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/(.*)",
       "dest": "core/wsgi.py"
+    },
+    {
+      "src": "/admin/(.*)",
+      "dest": "core/wsgi.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/$1"
     }
   ]
 }
