@@ -7,6 +7,10 @@
         "maxLambdaSize": "15mb",
         "runtime": "python3.12"
       }
+    },
+    {
+      "src": "frontend/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -17,6 +21,13 @@
     {
       "src": "/admin/(.*)",
       "dest": "core/wsgi.py"
+    },
+    {
+      "src": "/",
+      "status": 301,
+      "headers": {
+        "Location": "/account/login.html"
+      }
     },
     {
       "src": "/(.*)",
