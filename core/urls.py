@@ -16,10 +16,28 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.contrib import admin
+from django.urls import path, include, re_path
+from django.views.static import serve
+import os
+from django.conf import settings
+
+BASE_DIR = settings.BASE_DIR
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('accounts.urls')),
     path('api/subjects/', include('subjects.urls')),
     path('api/marks/', include('marks.urls')),
+
+
+    re_path(r'^frontend/(?P<path>.*)$', serve, {
+        'document_root': os.path.join(BASE_DIR, 'frontend'),
+    }),
+    
+    # إعادة توجيه الصفحة الرئيسية لصفحة اللوجن
+    re_path(r'^$', serve, {
+        'document_root': os.path.join(BASE_DIR, 'frontend/account'),
+        'path': 'login.html',
+    }),
 ]

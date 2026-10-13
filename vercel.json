@@ -11,21 +11,8 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "/(.*)",
       "dest": "core/wsgi.py"
-    },
-    {
-      "src": "/admin/(.*)",
-      "dest": "core/wsgi.py"
-    },
-    {
-      "src": "/",
-      "status": 301,
-      "headers": { "Location": "/frontend/account/login.html" }
-    },
-    {
-      "src": "/frontend/(.*)",
-      "dest": "/frontend/$1"
     }
   ]
 }
